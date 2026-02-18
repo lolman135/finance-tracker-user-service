@@ -1,4 +1,4 @@
-package playground.userservice.domain.role
+package tracker.userservice.domain.role
 
 import java.util.UUID
 

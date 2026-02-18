@@ -1,6 +1,6 @@
-package playground.userservice.domain.user
+package tracker.userservice.domain.user
 
-import playground.userservice.domain.BaseDomainRepository
+import tracker.userservice.domain.BaseDomainRepository
 import java.util.UUID
 
 interface UserRepository : BaseDomainRepository<UUID, User> {

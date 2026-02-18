@@ -1,4 +1,4 @@
-package playground.userservice.domain
+package tracker.userservice.domain
 
 interface BaseDomainRepository<ID, T> {
 

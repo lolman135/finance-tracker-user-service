@@ -1,6 +1,6 @@
-package playground.userservice.domain.user
+package tracker.userservice.domain.user
 
-import playground.userservice.domain.role.Role
+import tracker.userservice.domain.role.Role
 import java.time.LocalDate
 import java.util.UUID
 

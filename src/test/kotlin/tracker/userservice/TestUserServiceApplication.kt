@@ -1,4 +1,4 @@
-package playground.userservice
+package tracker.userservice
 
 import org.springframework.boot.fromApplication
 import org.springframework.boot.with
