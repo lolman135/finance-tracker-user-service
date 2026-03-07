@@ -6,4 +6,5 @@ interface BaseDomainRepository<ID, T> {
     fun findAll(): List<T>
     fun findById(id: ID): T?
     fun deleteById(id: ID)
+    fun findAllByPages(request: PageRequest): PageResponse<T>
 }

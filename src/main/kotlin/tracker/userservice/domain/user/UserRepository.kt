@@ -8,4 +8,7 @@ interface UserRepository : BaseDomainRepository<UUID, User> {
     fun findByFullName(firstName: String, lastName: String): User?
     fun findByEmail(email: String): User?
     fun findByPhoneNumber(phoneNumber: String): User?
+    fun existsByFullName(firstName: String, lastName: String): Boolean
+    fun existsByEmail(email: String): Boolean
+    fun existsByPhoneNumber(phoneNumber: String): Boolean
 }
