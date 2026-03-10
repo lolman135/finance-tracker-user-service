@@ -24,9 +24,6 @@ class CreateUserUseCase(
 
 //    @Transactional
     override fun execute(inboundCommand: CreateUserCommand): User {
-        if (userRepository.existsByFullName(inboundCommand.firstName, inboundCommand.lastName))
-            throw UserWithNameAlreadyExistsException()
-
         if (userRepository.existsByEmail(inboundCommand.email))
             throw UserWithEmailAlreadyExistsException()
 

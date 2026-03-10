@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: user-service
+
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.yaml
+    enabled: true
+
+logging:
+  level:
+    spring: debug

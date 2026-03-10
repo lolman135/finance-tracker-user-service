@@ -1,0 +1,26 @@
+databaseChangelog:
+  - changeSet:
+      id: user-db
+      author: kyrylo kusovskyi
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: public_id
+                  type: UUID
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(40)
+                  constraints:
+                    unique: true
+                    nullable: false

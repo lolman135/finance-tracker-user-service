@@ -21,21 +21,12 @@ class UpdateUserByIdUseCase(
     override fun execute(inboundCommand: UpdateUserCommand): User {
         val existedUser = userRepository.findById(inboundCommand.id) ?: throw UserNotFoundException()
 
-        val newFirstName = inboundCommand.firstName ?: existedUser.firstName
-        val newLastName = inboundCommand.lastName ?: existedUser.lastName
         val newEmail = inboundCommand.email ?: existedUser.email
         val newPhoneNumber = inboundCommand.phoneNumber ?: existedUser.phoneNumber
 
-        val isNameChangedFlag = newFirstName != existedUser.firstName || newLastName != existedUser.lastName
         val isEmailChangedFlag = newEmail != existedUser.email
         val isPhoneChangedFlag = newPhoneNumber != existedUser.phoneNumber
 
-        if (isNameChangedFlag) {
-            val existingUserByName = userRepository.findByFullName(newFirstName, newLastName)
-            if (existingUserByName != null && existingUserByName.id != existedUser.id) {
-                throw UserWithNameAlreadyExistsException()
-            }
-        }
 
         if (isEmailChangedFlag) {
             val existingUserByEmail = userRepository.findByEmail(newEmail)
