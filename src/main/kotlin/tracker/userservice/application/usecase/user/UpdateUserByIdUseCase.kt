@@ -3,7 +3,6 @@ package tracker.userservice.application.usecase.user
 import org.springframework.security.crypto.password.PasswordEncoder
 import tracker.userservice.application.exception.user.UserNotFoundException
 import tracker.userservice.application.exception.user.UserWithEmailAlreadyExistsException
-import tracker.userservice.application.exception.user.UserWithNameAlreadyExistsException
 import tracker.userservice.application.exception.user.UserWithPhoneAlreadyExistsException
 import tracker.userservice.application.usecase.UseCase
 import tracker.userservice.application.usecase.user.command.UpdateUserCommand
