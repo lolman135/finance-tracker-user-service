@@ -21,7 +21,7 @@ class UserEntity(
     @get:Id
     @get:GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
     @get:SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 50)
-    var id: Long?,
+    var id: Long? = null,
 
     @get:Column(name = "public_id")
     @get:NaturalId
