@@ -1,5 +1,11 @@
-databaseChangelog:
+databaseChangeLog:
   - include:
       file: liquibase/db.changelog-init-users.yaml
   - include:
       file: liquibase/db.changelog-init-roles.yaml
+  - include:
+      file: liquibase/db.changelog-init-user-role.yaml
+  - include:
+      file: liquibase/db.changelog-alter-role-add-seq.yaml
+  - include:
+      file: liquibase/db.changelod-insert-default-role.yaml

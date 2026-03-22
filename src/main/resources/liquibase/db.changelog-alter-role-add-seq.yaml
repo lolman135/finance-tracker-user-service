@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: user-db
+      author: kyrylo kusovskyi
+      changes:
+        - createSequence:
+            sequenceName: role_id_seq
+            incrementBy: 50
+
+        - createIndex:
+            tableName: roles
+            indexName: idx_roles_name
+            columns:
+              - column:
+                  name: name

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: user-db
+      author: kyrylo kusovskyi
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  valueComputed: nextval('role_id_seq')
+              - column:
+                  name: public_id
+                  value: "39cfc127-2954-4491-849e-5c4268b602f8"
+              - column:
+                  name: name
+                  value: "ROLE_USER"

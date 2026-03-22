@@ -1,4 +1,4 @@
-databaseChangelog:
+databaseChangeLog:
   - changeSet:
       id: user-db
       author: kyrylo kusovskyi
@@ -24,3 +24,4 @@ databaseChangelog:
                   constraints:
                     unique: true
                     nullable: false
+
