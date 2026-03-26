@@ -11,6 +11,7 @@ interface UserJpaRepository : NaturalIdRepository<UserEntity, UUID>{
 
     @Query("SELECT u FROM UserEntity u WHERE u.firstName = :firstName AND u.lastName = :lastName")
     fun findByFullName(firstName: String, lastName: String): Optional<UserEntity>
+    @Query("SELECT u FROM UserEntity u LEFT JOIN FETCH u.roles WHERE u.email = :email")
     fun findUserEntityByEmail(email: String): Optional<UserEntity>
     fun findUserEntityByPhoneNumber(email: String): Optional<UserEntity>
 

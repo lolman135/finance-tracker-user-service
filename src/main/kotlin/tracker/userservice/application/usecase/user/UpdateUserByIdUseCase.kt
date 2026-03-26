@@ -1,6 +1,8 @@
 package tracker.userservice.application.usecase.user
 
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import tracker.userservice.application.exception.user.UserNotFoundException
 import tracker.userservice.application.exception.user.UserWithEmailAlreadyExistsException
 import tracker.userservice.application.exception.user.UserWithPhoneAlreadyExistsException
@@ -9,14 +11,13 @@ import tracker.userservice.application.usecase.user.command.UpdateUserCommand
 import tracker.userservice.domain.user.User
 import tracker.userservice.domain.user.UserRepository
 
-// TODO: Uncomment after adding implementation of repository
-//@Service
+@Service
 class UpdateUserByIdUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) : UseCase<UpdateUserCommand, User> {
 
-//    @Transactional
+    @Transactional
     override fun execute(inboundCommand: UpdateUserCommand): User {
         val existedUser = userRepository.findById(inboundCommand.id) ?: throw UserNotFoundException()
 

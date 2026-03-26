@@ -21,17 +21,17 @@ data class User(
 
     fun changeLastName(newLastName: String): User {
         require(newLastName.isNotBlank()){"Last name cannot be empty"}
-        return copy(firstName = newLastName)
+        return copy(lastName = newLastName)
     }
 
     fun changePhoneNumber(newPhoneNumber: String): User {
         require(newPhoneNumber.isNotBlank()){"Phone number cannot be empty"}
-        return copy(firstName = newPhoneNumber)
+        return copy(phoneNumber = newPhoneNumber)
     }
 
     fun changeEmail(email: String): User {
         require(email.isNotBlank()){"Email cannot be empty"}
-        return copy(firstName = email)
+        return copy(email = email)
     }
 
     fun changePasswordHash(newPasswordHash: String): User{

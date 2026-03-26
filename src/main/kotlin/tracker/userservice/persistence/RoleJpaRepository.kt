@@ -10,4 +10,5 @@ interface RoleJpaRepository : NaturalIdRepository<RoleEntity, UUID>{
 
     fun existsRoleEntityByName(name: String): Boolean
     fun findRoleEntityByName(name: String): Optional<RoleEntity>
+    fun findAllByPublicIdIn(publicIds: List<UUID>): List<RoleEntity>
 }

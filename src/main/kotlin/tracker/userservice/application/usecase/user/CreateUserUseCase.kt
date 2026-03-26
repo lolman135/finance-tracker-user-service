@@ -1,6 +1,7 @@
 package tracker.userservice.application.usecase.user
 
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import tracker.userservice.application.exception.user.UserWithEmailAlreadyExistsException
 import tracker.userservice.application.exception.user.UserWithPhoneAlreadyExistsException
@@ -13,15 +14,14 @@ import tracker.userservice.domain.user.UserRepository
 import java.time.LocalDate
 import java.util.UUID
 
-// TODO: Uncomment after adding implementation of repository
-//@Service
+@Service
 class CreateUserUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val getDefaultRoleUseCase: GetDefaultRoleUseCase
 ) : UseCase<CreateUserCommand, User>{
 
-//    @Transactional
+    @Transactional
     override fun execute(inboundCommand: CreateUserCommand): User {
         if (userRepository.existsByEmail(inboundCommand.email))
             throw UserWithEmailAlreadyExistsException()
