@@ -24,7 +24,18 @@ class RoleRepositoryImpl(
 
     override fun existsByName(name: String) = jpaRepository.existsRoleEntityByName(name)
 
-    override fun save(domain: Role) = mapper.toDomain(jpaRepository.save(mapper.toEntity(domain)))
+    override fun save(domain: Role): Role {
+        val existingEntity = jpaRepository.findByNaturalId(domain.id)
+            .orElse(null)
+
+        return if (existingEntity == null) {
+            val newEntity = mapper.toEntity(domain)
+            mapper.toDomain(jpaRepository.save(newEntity))
+        } else {
+            existingEntity.name = domain.name
+            mapper.toDomain(existingEntity)
+        }
+    }
 
     override fun findAll() =
         jpaRepository.findAll()

@@ -3,6 +3,7 @@ package tracker.userservice.application.usecase.user
 
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import tracker.userservice.application.common.toRoleFormat
 import tracker.userservice.application.exception.role.RoleNotFoundException
 import tracker.userservice.application.exception.user.UserNotFoundException
 import tracker.userservice.application.usecase.UseCase
@@ -20,7 +21,7 @@ class AddRoleUseCase(
     @Transactional
     override fun execute(inboundCommand: AddRoleCommand): User {
         val user = userRepository.findById(inboundCommand.userId) ?: throw UserNotFoundException()
-        val roleToAdd = roleRepository.findByName(inboundCommand.roleName) ?: throw RoleNotFoundException()
+        val roleToAdd = roleRepository.findByName(inboundCommand.roleName.toRoleFormat()) ?: throw RoleNotFoundException()
         val grantedUser = user.addRole(roleToAdd)
         return userRepository.save(grantedUser)
     }

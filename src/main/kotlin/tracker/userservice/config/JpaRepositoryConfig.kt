@@ -8,6 +8,6 @@ import tracker.userservice.persistence.impl.NaturalIdRepositoryImpl
 @Configuration
 @EnableJpaAuditing
 @EnableJpaRepositories(
-    basePackages = ["labs.catmarket.repository"],
+    basePackages = ["tracker.userservice.persistence"],
     repositoryBaseClass = NaturalIdRepositoryImpl::class)
 class JpaRepositoryConfig

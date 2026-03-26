@@ -19,7 +19,7 @@ class UpdateUserByIdUseCase(
 
     @Transactional
     override fun execute(inboundCommand: UpdateUserCommand): User {
-        val existedUser = userRepository.findById(inboundCommand.id) ?: throw UserNotFoundException()
+        val existedUser = userRepository.findById(inboundCommand.id!!) ?: throw UserNotFoundException()
 
         val newEmail = inboundCommand.email ?: existedUser.email
         val newPhoneNumber = inboundCommand.phoneNumber ?: existedUser.phoneNumber
@@ -42,12 +42,12 @@ class UpdateUserByIdUseCase(
             }
         }
 
-        val updatedUser = existedUser
-        inboundCommand.firstName?.let{ updatedUser.changeFirstName(it)}
-        inboundCommand.lastName?.let { updatedUser.changeLastName(it) }
-        inboundCommand.email?.let { updatedUser.changeEmail(it) }
-        inboundCommand.phoneNumber?.let{ updatedUser.changePhoneNumber(it)}
-        inboundCommand.password?.let { updatedUser.changePasswordHash(passwordEncoder.encode(it)!!) }
+        var updatedUser = existedUser
+        updatedUser = inboundCommand.firstName?.let { updatedUser.changeFirstName(it) } ?: updatedUser
+        updatedUser = inboundCommand.lastName?.let { updatedUser.changeLastName(it) } ?: updatedUser
+        updatedUser = inboundCommand.email?.let { updatedUser.changeEmail(it) } ?: updatedUser
+        updatedUser = inboundCommand.phoneNumber?.let { updatedUser.changePhoneNumber(it) } ?: updatedUser
+        updatedUser = inboundCommand.password?.let { updatedUser.changePasswordHash(passwordEncoder.encode(it)!!) } ?: updatedUser
 
         return userRepository.save(updatedUser)
     }

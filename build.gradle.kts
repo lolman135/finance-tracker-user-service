@@ -28,6 +28,8 @@ dependencies {
     implementation("tools.jackson.module:jackson-module-kotlin")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("org.springframework.boot:spring-boot-starter-liquibase")
+    implementation("jakarta.validation:jakarta.validation-api:3.1.0")
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.5.5")
     implementation("org.liquibase:liquibase-core")
     testImplementation("org.springframework.amqp:spring-rabbit-test")
     developmentOnly("org.springframework.boot:spring-boot-devtools")

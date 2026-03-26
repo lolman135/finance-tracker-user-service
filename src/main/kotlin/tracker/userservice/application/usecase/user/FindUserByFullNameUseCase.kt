@@ -9,9 +9,8 @@ import tracker.userservice.domain.user.UserRepository
 
 @Service
 class FindUserByFullNameUseCase(private val userRepository: UserRepository)
-    : UseCase<FindUserByFullNameCommand, User> {
+    : UseCase<FindUserByFullNameCommand, List<User>> {
 
     override fun execute(inboundCommand: FindUserByFullNameCommand) =
-        userRepository.findByFullName(inboundCommand.firstName, inboundCommand.lastName) ?:
-            throw UserNotFoundException()
+        userRepository.findByFullName(inboundCommand.firstName, inboundCommand.lastName)
 }
