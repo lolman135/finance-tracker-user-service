@@ -32,6 +32,7 @@ import tracker.userservice.infrastructure.dto.user.UserDtoOutbound
 import tracker.userservice.infrastructure.dto.user.UserRegisterDtoInbound
 import tracker.userservice.infrastructure.dto.user.UserUpdateDtoInbound
 import tracker.userservice.infrastructure.mapper.web.UserDtoDomainMapper
+import java.net.URI
 import java.util.UUID
 
 @RestController
@@ -51,10 +52,11 @@ class UserController(
 ) {
 
     @PostMapping
-    fun createUser(@Valid @RequestBody request: UserRegisterDtoInbound): ResponseEntity<UserDtoOutbound> {
-        val command = userMapper.toRegisterCommand(request).toCreateCommand()
-        val user = createUserUseCase.execute(command)
-        return ResponseEntity.status(HttpStatus.CREATED).body(userMapper.toDto(user))
+    fun createUser(@Valid @RequestBody inbound: UserRegisterDtoInbound): ResponseEntity<UserDtoOutbound> {
+        val command = userMapper.toRegisterCommand(inbound).toCreateCommand()
+        val response = userMapper.toDto(createUserUseCase.execute(command))
+        val location = URI.create("/api/v1/users")
+        return ResponseEntity.created(location).body(response)
     }
 
     @GetMapping("/{id}")

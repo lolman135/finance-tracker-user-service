@@ -3,7 +3,7 @@ package tracker.userservice.infrastructure.dto.user
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.Pattern
 
-class UserRegisterDtoInbound(
+data class UserRegisterDtoInbound(
     @field:Pattern(regexp = "^[a-zA-Zа-яА-ЯіІїЇʼєЄ\\d\\s]{2,}$", message = "Invalid name")
     val firstName: String,
 
