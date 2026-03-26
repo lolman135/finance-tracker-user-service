@@ -26,6 +26,12 @@ spring:
     hibernate:
       ddl-auto: none
 
+auth:
+  jwt:
+    access-token-ttl-sec: 86400
+    secret-key: ${API_KEY:eDjRpOuetRNEdjMQFLyMhiZV2Q94nkROgrHXR1+fUU+4kNQT7qjhutB4V98MqudDX8h74fy+/9AIGck44wGMLg}
+
+
 logging:
   level:
     spring: debug

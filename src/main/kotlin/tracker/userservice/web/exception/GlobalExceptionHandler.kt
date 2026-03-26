@@ -15,6 +15,7 @@ import org.springframework.web.context.request.WebRequest
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 import tracker.userservice.application.exception.DomainAlreadyExistsException
 import tracker.userservice.application.exception.DomainNotFoundException
+import tracker.userservice.application.exception.InvalidCredentialsException
 import java.net.URI
 
 @ControllerAdvice
@@ -42,6 +43,15 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
         return problem
     }
 
+    @ExceptionHandler(InvalidCredentialsException::class)
+    fun handleInvalidCredentialsException(ex: InvalidCredentialsException, request: HttpServletRequest): ProblemDetail {
+        val problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.message)
+        problem.title = "Unauthorized"
+        problem.type = URI.create("https://example.com/errors/not-found")
+        problem.instance = URI.create(request.requestURI)
+        log.warn(ex.message)
+        return problem
+    }
 
     @ExceptionHandler(DomainAlreadyExistsException::class)
     fun handleDomainAlreadyExistsException(
@@ -84,8 +94,6 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
         log.warn(ex.message)
         return ResponseEntity(problem, HttpStatus.BAD_REQUEST)
     }
-
-
 
     @ExceptionHandler(Exception::class)
     fun handleAll(ex: Exception, request: HttpServletRequest): ProblemDetail {

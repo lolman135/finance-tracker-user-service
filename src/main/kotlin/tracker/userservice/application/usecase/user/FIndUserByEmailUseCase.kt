@@ -9,5 +9,6 @@ import tracker.userservice.domain.user.UserRepository
 @Service
 class FIndUserByEmailUseCase(private val userRepository: UserRepository) : UseCase<String, User>{
 
-    override fun execute(email: String) = userRepository.findByEmail(email) ?: throw UserNotFoundException()
+    override fun execute(email: String) = userRepository.findByEmail(email)
+        ?: throw UserNotFoundException("User with this email not found")
 }

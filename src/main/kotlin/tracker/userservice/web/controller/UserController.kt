@@ -65,6 +65,7 @@ class UserController(
         return ResponseEntity.ok(userMapper.toDto(user))
     }
 
+    //TODO: close only for admin later
     @PutMapping("/{id}")
     fun updateUser(
         @PathVariable id: UUID,

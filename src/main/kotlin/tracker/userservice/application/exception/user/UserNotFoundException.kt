@@ -2,5 +2,5 @@ package tracker.userservice.application.exception.user
 
 import tracker.userservice.application.exception.DomainNotFoundException
 
-class UserNotFoundException() : DomainNotFoundException("This user not found") {
+class UserNotFoundException(override val message: String = "This user not found") : DomainNotFoundException(message) {
 }

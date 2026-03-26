@@ -23,3 +23,7 @@ spring:
     change-log: classpath:liquibase/db.changelog-master.yaml
     enabled: true
 
+auth:
+  jwt:
+    secret-key: 01234567890123456789012345678901
+    access-token-ttl-sec: 3600
