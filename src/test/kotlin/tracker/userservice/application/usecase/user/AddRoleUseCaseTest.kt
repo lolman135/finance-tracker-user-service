@@ -47,7 +47,7 @@ class AddRoleUseCaseTest {
             roles = setOf(Role(UUID.randomUUID(), "ROLE_USER"))
         )
         val newRole = Role(roleId, "ROLE_ADMIN")
-        val command = AddRoleCommand(userId, "ROLE_ADMIN")
+        val command = AddRoleCommand(userId, "admin")
         val updatedUser = user.copy(roles = user.roles + newRole)
 
         whenever(userRepository.findById(userId)).thenReturn(user)
