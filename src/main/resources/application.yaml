@@ -8,9 +8,9 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/finance_tracker_user_db}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_USERNAME:postgres}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_USERNAME}
 
   jpa:
     show-sql: true
@@ -29,7 +29,7 @@ spring:
 auth:
   jwt:
     access-token-ttl-sec: 86400
-    secret-key: ${API_KEY:eDjRpOuetRNEdjMQFLyMhiZV2Q94nkROgrHXR1+fUU+4kNQT7qjhutB4V98MqudDX8h74fy+/9AIGck44wGMLg}
+    secret-key: ${API_KEY}
 
 
 logging:
