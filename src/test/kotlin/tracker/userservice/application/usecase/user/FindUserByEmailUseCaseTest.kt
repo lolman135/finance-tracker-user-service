@@ -16,12 +16,12 @@ import kotlin.test.assertEquals
 class FindUserByEmailUseCaseTest {
 
     private lateinit var userRepository: UserRepository
-    private lateinit var useCase: FIndUserByEmailUseCase
+    private lateinit var useCase: FindUserByEmailUseCase
 
     @BeforeEach
     fun setup() {
         userRepository = mock()
-        useCase = FIndUserByEmailUseCase(userRepository)
+        useCase = FindUserByEmailUseCase(userRepository)
     }
 
     @Test

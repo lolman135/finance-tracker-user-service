@@ -8,11 +8,11 @@ import tracker.userservice.application.JwtProvider
 import tracker.userservice.application.exception.InvalidCredentialsException
 import tracker.userservice.application.usecase.UseCase
 import tracker.userservice.application.usecase.auth.command.LoginUserCommand
-import tracker.userservice.application.usecase.user.FIndUserByEmailUseCase
+import tracker.userservice.application.usecase.user.FindUserByEmailUseCase
 
 @Service
 class LoginUseCase(
-    private val fIndUserByEmailUseCase: FIndUserByEmailUseCase,
+    private val fIndUserByEmailUseCase: FindUserByEmailUseCase,
     private val authenticationManager: AuthenticationManager,
     private val jwtProvider: JwtProvider
 ) : UseCase<LoginUserCommand,  String>{

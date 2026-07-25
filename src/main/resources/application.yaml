@@ -1,6 +1,10 @@
 spring:
   application:
     name: user-service
+  config:
+    import:
+      - optional:file:.env
+      - optional:file:../.env
 
   liquibase:
     change-log: classpath:liquibase/db.changelog-master.yaml
@@ -8,9 +12,9 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_USERNAME}
+    url: ${USER_DB_URL}
+    username: ${USER_DB_USERNAME}
+    password: ${USER_DB_PASSWORD}
 
   jpa:
     show-sql: true
@@ -29,7 +33,7 @@ spring:
 auth:
   jwt:
     access-token-ttl-sec: 86400
-    secret-key: ${API_KEY}
+    secret-key: ${USER_API_KEY}
 
 
 logging:

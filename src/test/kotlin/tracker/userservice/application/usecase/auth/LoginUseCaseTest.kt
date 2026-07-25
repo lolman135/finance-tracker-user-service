@@ -10,13 +10,13 @@ import org.springframework.security.core.Authentication
 import tracker.userservice.application.JwtProvider
 import tracker.userservice.application.exception.InvalidCredentialsException
 import tracker.userservice.application.usecase.auth.command.LoginUserCommand
-import tracker.userservice.application.usecase.user.FIndUserByEmailUseCase
+import tracker.userservice.application.usecase.user.FindUserByEmailUseCase
 import tracker.userservice.domain.user.User
 import java.util.UUID
 
 class LoginUseCaseTest {
 
-    private val fIndUserByEmailUseCase: FIndUserByEmailUseCase = mock()
+    private val fIndUserByEmailUseCase: FindUserByEmailUseCase = mock()
     private val authenticationManager: AuthenticationManager = mock()
     private val jwtProvider: JwtProvider = mock()
     private val useCase = LoginUseCase(fIndUserByEmailUseCase, authenticationManager, jwtProvider)

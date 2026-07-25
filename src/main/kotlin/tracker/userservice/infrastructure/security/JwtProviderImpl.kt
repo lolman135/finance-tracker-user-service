@@ -13,14 +13,14 @@ import javax.crypto.SecretKey
 @Component
 class JwtProviderImpl(
     @param:Value("\${auth.jwt.secret-key}") private val key: String,
-    @param:Value("\${auth.jwt.access-token-ttl-sec}") private val jwtExpirationMs: Long
+    @param:Value("\${auth.jwt.access-token-ttl-sec}") private val jwtExpirationSec: Long
 ) : JwtProvider {
 
     private val secretKey: SecretKey = Keys.hmacShaKeyFor(key.toByteArray())
 
     override fun generateToken(id: UUID): String {
         val now = Date()
-        val expiryDate = Date(now.time + jwtExpirationMs)
+        val expiryDate = Date(now.time + (jwtExpirationSec * 1000))
 
         return Jwts.builder()
             .setSubject(id.toString())

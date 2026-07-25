@@ -1,7 +1,6 @@
 package tracker.userservice.web.controller
 
 import jakarta.validation.Valid
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -17,7 +16,7 @@ import tracker.userservice.application.common.toCreateCommand
 import tracker.userservice.application.usecase.user.AddRoleUseCase
 import tracker.userservice.application.usecase.user.CreateUserUseCase
 import tracker.userservice.application.usecase.user.DeleteUserByIdUseCase
-import tracker.userservice.application.usecase.user.FIndUserByEmailUseCase
+import tracker.userservice.application.usecase.user.FindUserByEmailUseCase
 import tracker.userservice.application.usecase.user.FindAllUsersUseCase
 import tracker.userservice.application.usecase.user.FindUserByFullNameUseCase
 import tracker.userservice.application.usecase.user.FindUserByIdUseCase
@@ -44,7 +43,7 @@ class UserController(
     private val updateUserByIdUseCase: UpdateUserByIdUseCase,
     private val deleteUserByIdUseCase: DeleteUserByIdUseCase,
     private val findAllUsersUseCase: FindAllUsersUseCase,
-    private val findUserByEmailUseCase: FIndUserByEmailUseCase,
+    private val findUserByEmailUseCase: FindUserByEmailUseCase,
     private val findUserByPhoneUseCase: FindUserByPhoneUseCase,
     private val findUserByFullNameUseCase: FindUserByFullNameUseCase,
     private val addRoleUseCase: AddRoleUseCase,
